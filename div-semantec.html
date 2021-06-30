@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      a,
+      abbr,
+      acronym,
+      address,
+      applet,
+      article,
+      aside,
+      audio,
+      b,
+      big,
+      blockquote,
+      body,
+      canvas,
+      caption,
+      center,
+      cite,
+      code,
+      dd,
+      del,
+      details,
+      dfn,
+      div,
+      dl,
+      dt,
+      em,
+      embed,
+      fieldset,
+      figcaption,
+      figure,
+      footer,
+      form,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      header,
+      hgroup,
+      html,
+      i,
+      iframe,
+      img,
+      ins,
+      kbd,
+      label,
+      legend,
+      li,
+      mark,
+      menu,
+      nav,
+      object,
+      ol,
+      output,
+      p,
+      pre,
+      q,
+      ruby,
+      s,
+      samp,
+      section,
+      small,
+      span,
+      strike,
+      strong,
+      sub,
+      summary,
+      sup,
+      table,
+      tbody,
+      td,
+      tfoot,
+      th,
+      thead,
+      time,
+      tr,
+      tt,
+      u,
+      ul,
+      var,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote:after,
+      blockquote:before,
+      q:after,
+      q:before {
+        content: "";
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      .header {
+        display: grid;
+        grid-template-columns: 24px 400px 1fr 84px 24px;
+        grid-template-areas: "left-space logo nav account right-space";
+        align-items: center;
+        height: 64px;
+        background-color: #ff4500;
+      }
+      .header .logo {
+        grid-area: logo;
+        font-size: 2rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: #fff;
+      }
+      .header .nav {
+        grid-area: nav;
+      }
+      .header .nav li {
+        display: inline-block;
+        margin-right: 36px;
+      }
+      .header .nav li a {
+        font-size: 1.25rem;
+        text-decoration: none;
+        color: #fff;
+      }
+      .header .account {
+        grid-area: account;
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: #fff;
+      }
+      .main {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        grid-template-areas: "aside content";
+      }
+      .main .aside {
+        grid-area: aside;
+        background-color: #eee;
+        border-right: 1px solid #d3d3d3;
+        padding: 36px;
+      }
+      .main .aside .option-title {
+        font-size: 1.5em;
+        font-weight: 700;
+        color: gray;
+      }
+      .main .aside ul {
+        font-size: 1.25em;
+        margin: 32px 8px;
+        line-height: 1.5em;
+      }
+      .main .aside ul li {
+        cursor: pointer;
+      }
+      .main .content {
+        grid-area: content;
+        min-height: calc(100vh - 196px);
+        background-color: #fafafa;
+      }
+      .main .content .section.intro {
+        padding: 96px 80px;
+        background-color: #fff;
+        border-bottom: 1px solid #d3d3d3;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+      }
+      .main .content .section.intro h1 {
+        font-size: 1.5em;
+        font-weight: 700;
+        margin-bottom: 24px;
+      }
+      .main .content .section.gallery {
+        padding: 16px;
+      }
+      .main .content .section.gallery .article {
+        display: inline-block;
+        margin: 8px;
+        padding: 24px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 16px;
+      }
+      .main .content .section.gallery .article .photo {
+        width: 480px;
+        height: 360px;
+      }
+      .main .content .section.gallery .article .info {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        grid-template-rows: 32px max-content;
+        grid-template-areas: "like author" "like desc";
+        align-items: center;
+        margin-top: 16px;
+        font-size: 1.2rem;
+      }
+      .main .content .section.gallery .article .info .like {
+        grid-area: like;
+        text-align: center;
+        font-size: 2.4em;
+        color: #ff1493;
+      }
+      .main .content .section.gallery .article .info .author {
+        grid-area: author;
+        font-weight: 700;
+      }
+      .main .content .section.gallery .article .info .desc {
+        grid-area: desc;
+        padding: 4px 0;
+        color: gray;
+      }
+      #photo-1 {
+        background-image: url(summer.jpeg);
+      }
+      .footer {
+        background-color: #383838;
+        padding: 64px 0;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+      .footer ul > li {
+        display: inline-block;
+        padding: 0 48px;
+      }
+      .footer ul > li:not(:last-child) {
+        border-right: 1px solid gray;
+      }
+      .footer ul > li a {
+        color: #fff;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <a class="logo" href="div-semantec.html">썸머파파 포트폴리오 사이트</a>
+      <nav class="nav">
+        <ul>
+          <li><a href="additional.html">야구 판타지</a></li>
+          <li><a href="#">농구 판타지</a></li>
+          <li><a href="#">비틀즈</a></li>
+          <li><a href="#">힐송</a></li>
+          <li><a href="#">플스</a></li>
+        </ul>
+      </nav>
+      <a class="account" href="#">Logout</a>
+    </header>
+    <main class="main">
+      <aside class="aside">
+        <div class="option-title">샘플 코드</div>
+        <ul>
+          <li>계산기</li>
+          <li>구구단</li>
+        </ul>
+        <ul>
+          <li><a href="base-tag.html">기본태그</a></li>
+          <li><a href="img-tag.html">이미지태그</a></li>
+          <li><a href="dup-tag.html">중첩태그</a></li>
+          <li><a href="inline.html">인라인/블락요소</a></li>
+          <li><a href="form-tag.html">폼태그</a></li>
+        </ul>
+      </aside>
+      <div class="content">
+        <section class="section intro">
+          <h1>썸머파파 포트폴리오입니다.</h1>
+          <p>
+            수 많은 샘플 코드의 향연과<br />
+            다채로운 문화 생활의 누림을 공유합니다
+          </p>
+        </section>
+        <section class="section gallery">
+          <article class="article">
+            <div id="photo-1" class="photo"></div>
+            <div class="info">
+              <div class="like">♥︎</div>
+              <div class="author">썸머파파</div>
+              <div class="desc">바로 썸머 입니다.</div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </main>
+    <footer class="footer">
+      <ul>
+        <li><a href="#">자료출처</a></li>
+        <li><a href="#">테크트리</a></li>
+        <li><a href="#">확장계획</a></li>
+        <li><a href="#">문의사항</a></li>
+        <li><a href="#">소스코드</a></li>
+      </ul>
+    </footer>
+  </body>
+</html>

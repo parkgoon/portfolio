@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      a,
+      abbr,
+      acronym,
+      address,
+      applet,
+      article,
+      aside,
+      audio,
+      big,
+      blockquote,
+      body,
+      canvas,
+      caption,
+      center,
+      cite,
+      code,
+      dd,
+      del,
+      details,
+      dfn,
+      div,
+      dl,
+      dt,
+      em,
+      embed,
+      fieldset,
+      figcaption,
+      figure,
+      footer,
+      form,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      header,
+      hgroup,
+      html,
+      iframe,
+      img,
+      ins,
+      kbd,
+      label,
+      legend,
+      li,
+      mark,
+      menu,
+      nav,
+      object,
+      ol,
+      output,
+      p,
+      pre,
+      q,
+      ruby,
+      s,
+      samp,
+      section,
+      small,
+      span,
+      strike,
+      summary,
+      table,
+      tbody,
+      td,
+      tfoot,
+      th,
+      thead,
+      time,
+      tr,
+      tt,
+      u,
+      ul,
+      var,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote:after,
+      blockquote:before,
+      q:after,
+      q:before {
+        content: "";
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      td,
+      th {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 12px 16px;
+        line-height: 2em;
+      }
+      caption {
+        font-size: 1.5em;
+        margin-bottom: 12px;
+      }
+      input,
+      select {
+        font-size: 1rem;
+      }
+      button {
+        font-size: 1.2rem;
+        margin-right: 8px;
+      }
+      textarea {
+        padding: 8px;
+        font-size: 0.95em;
+        width: 360px;
+        border: 1px solid #ddd;
+      }
+      label {
+        display: inline-block;
+        margin-right: 12px;
+        vertical-align: top;
+      }
+      .header {
+        display: grid;
+        grid-template-columns: 24px 400px 1fr 84px 24px;
+        grid-template-areas: "left-space logo nav account right-space";
+        align-items: center;
+        height: 64px;
+        background-color: #ff4500;
+      }
+      .header .logo {
+        grid-area: logo;
+        font-size: 2rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: #fff;
+      }
+      .header .nav {
+        grid-area: nav;
+      }
+      .header .nav li {
+        display: inline-block;
+        margin-right: 36px;
+      }
+      .header .nav li a {
+        font-size: 1.25rem;
+        text-decoration: none;
+        color: #fff;
+      }
+      .header .account {
+        grid-area: account;
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: #fff;
+      }
+      .main {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        grid-template-areas: "aside content";
+      }
+      .main .aside {
+        grid-area: aside;
+        background-color: #eee;
+        border-right: 1px solid #d3d3d3;
+        padding: 36px;
+      }
+      .main .aside .option-title {
+        font-size: 1.5em;
+        font-weight: 700;
+        color: gray;
+      }
+      .main .aside ol,
+      .main .aside ul {
+        padding-left: 18px;
+        font-size: 1.15em;
+        margin: 32px 8px;
+        line-height: 1.5em;
+      }
+      .main .aside ol li,
+      .main .aside ul li {
+        cursor: pointer;
+      }
+      .main .content {
+        grid-area: content;
+        min-height: calc(100vh - 196px);
+        background-color: #fafafa;
+      }
+      .main .content .section.intro {
+        padding: 56px 48px;
+        background-color: #fff;
+        border-bottom: 1px solid #d3d3d3;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+      }
+      .main .content .section.intro h1 {
+        font-size: 1.5em;
+        font-weight: 700;
+        margin-bottom: 24px;
+      }
+      .main .content .section.form {
+        padding: 36px;
+      }
+      .footer {
+        background-color: #383838;
+        padding: 64px 0;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+      .footer ul > li {
+        display: inline-block;
+        padding: 0 48px;
+      }
+      .footer ul > li:not(:last-child) {
+        border-right: 1px solid gray;
+      }
+      .footer ul > li a {
+        color: #fff;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <a class="logo" href="div-semantec.html">썸머파파 포트폴리오 사이트</a>
+      <nav class="nav">
+        <ul>
+          <li><a href="additional.html">야구 판타지</a></li>
+          <li><a href="#">농구 판타지</a></li>
+          <li><a href="#">비틀즈</a></li>
+          <li><a href="#">힐송</a></li>
+          <li><a href="#">플스</a></li>
+        </ul>
+      </nav>
+      <a class="account" href="#">Logout</a>
+    </header>
+    <main class="main">
+      <aside class="aside">
+        <div class="option-title">자료 업로드</div>
+        <ol>
+          <li>양식을 작성한다.</li>
+          <li>자료를 첨부한다.</li>
+          <li>올리기 버튼을 누른다.</li>
+        </ol>
+      </aside>
+      <div class="content">
+        <section class="section intro">
+          <h1>자료 올리기</h1>
+          <p>
+            오랜 고민 끝에 제작된 <strong>자료</strong>들을 리뷰하고<br />
+            새로 제작한 자료를 업로드합니다!
+          </p>
+        </section>
+
+        <section class="section form">
+          <form>
+            <table>
+              <caption>
+                자료 업로드 폼
+              </caption>
+              <tr>
+                <th>자료 유형</th>
+                <td>
+                  <label for="input-name">타이틀</label>
+                  <input id="input-name" type="text" />
+                  <br />
+                  <input
+                    id="radio-com"
+                    type="radio"
+                    value="com"
+                    name="is-pro"
+                    checked
+                  />
+                  <label for="radio-com">농구</label>
+                  <input
+                    id="radio-pro"
+                    type="radio"
+                    value="pro"
+                    name="is-pro"
+                  />
+                  <label for="radio-pro">야구</label>
+                </td>
+                <td rowspan="3">
+                  현재 순위<br />
+                  <img src="fantasy.png" alt="현재 순위" />
+                  <p>
+                    '21년도 판타지-야구 리그 순위 입니다<br />
+                    우승을 위하여 달려 보아요
+                  </p>
+                  <a href="https://baseball.fantasysports.yahoo.com/b1/2435"
+                    >판타지 사이트 바로가기</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <th>자료 정보</th>
+                <td>
+                  <label for="input-title">출처</label>
+                  <input id="input-title" type="text" />
+                  <br />
+                  <label for="sel-theme">유형</label>
+                  <select id="sel-theme">
+                    <option value="nature">구단</option>
+                    <option value="city">선수</option>
+                    <option value="thing">일정</option>
+                    <option value="people">예약</option>
+                    <option value="animal">기타</option>
+                  </select>
+                  <br />
+                  <label for="ta-desc">설명</label>
+                  <textarea
+                    id="ta-desc"
+                    rows="12"
+                    placeholder="자료 내용을 정의합니다."
+                  ></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <label for="input-photo">자료 첨부</label>
+                  <input id="input-photo" type="file" />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <button>올리기</button>
+                  <button type="button">취소</button>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </section>
+      </div>
+    </main>
+    <footer class="footer">
+      <ul>
+        <li><a href="#">자료출처</a></li>
+        <li><a href="#">테크트리</a></li>
+        <li><a href="#">확장계획</a></li>
+        <li><a href="#">문의사항</a></li>
+        <li><a href="#">소스코드</a></li>
+      </ul>
+    </footer>
+  </body>
+</html>
