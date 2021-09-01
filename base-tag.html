@@ -29,6 +29,20 @@
         document.querySelector('body').style.color='black';
     "
     />
+
+    <input id="on-off" type="button" value="싱글:암흑속으로" onclick="
+      if(document.querySelector('#on-off').value==='싱글:암흑속으로'){
+        document.querySelector('body').style.background='black';
+        document.querySelector('body').style.color='white';
+        document.querySelector('#on-off').value='싱글:회복으로';
+      }
+      else{
+        document.querySelector('body').style.background='white';
+        document.querySelector('body').style.color='black';
+        document.querySelector('#on-off').value='싱글:암흑속으로';
+      }      
+    ">
+
     <h1>상어가족</h1>
     <h2>어린이 동요</h2>
     <p>
