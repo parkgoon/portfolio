@@ -30,17 +30,35 @@
     "
     />
 
-    <input id="on-off" type="button" value="싱글:암흑속으로" onclick="
-      if(document.querySelector('#on-off').value==='싱글:암흑속으로'){
+    <script>
+      function test(self){
+        if(document.querySelector('#on-off').value==='함수:암흑속으로'){
         document.querySelector('body').style.background='black';
         document.querySelector('body').style.color='white';
-        document.querySelector('#on-off').value='싱글:회복으로';        
+        document.querySelector('#on-off').value='함수:회복으로';        
       }
       else{
         document.querySelector('body').style.background='white';
         document.querySelector('body').style.color='black';
-        document.querySelector('#on-off').value='싱글:암흑속으로';
+        document.querySelector('#on-off').value='함수:암흑속으로';
       }      
+      }
+    </script>
+    <input id="on-off" type="button" value="함수:암흑속으로" onclick="
+      test(this);
+    ">
+
+    <input type="button" value="싱글:암흑속으로" onclick="
+    if(this.value==='싱글:암흑속으로'){
+      document.querySelector('body').style.background='black';
+      document.querySelector('body').style.color='white';
+      this.value='싱글:회복으로';        
+    }
+    else{
+      document.querySelector('body').style.background='white';
+      document.querySelector('body').style.color='black';
+      this.value='싱글:암흑속으로';
+    }      
     ">
 
     
