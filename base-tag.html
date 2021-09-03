@@ -34,21 +34,21 @@
 
     <script>
       function test(self){
-        if(document.querySelector('#on-off').value==='함수:암흑속으로'){
-        document.querySelector('body').style.background='black';
-        document.querySelector('body').style.color='white';
-        document.querySelector('#on-off').value='함수:회복으로';     
-           
+        var target=document.querySelector('body');
+        if(self.value==='함수:암흑속으로'){
+        target.style.background='black';
+        target.style.color='white';
+        self.value='함수:회복으로';          
 
       }
       else{
-        document.querySelector('body').style.background='white';
-        document.querySelector('body').style.color='black';
-        document.querySelector('#on-off').value='함수:암흑속으로';
+        target.style.background='white';
+        target.style.color='black';
+        self.value='함수:암흑속으로';
       }      
       }
     </script>
-    <input id="on-off" type="button" value="함수:암흑속으로" onclick="
+    <input type="button" value="함수:암흑속으로" onclick="
       test(this);
     ">
 
@@ -90,7 +90,11 @@
     <p><small>from</small> <cite>핑크퐁 동요</cite></p>
     <p>
     <script>
-      document.write('test112222');
+      document.write('Function Test'+'<br>');
+      function add(a,b){
+        return a+b;
+      }
+      document.write(add(1,2)+'<br>')      
     </script>
     </p>
   </body>
