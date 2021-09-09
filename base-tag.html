@@ -11,6 +11,61 @@
         margin: 32px 16px;
       }
     </style>
+
+  <script>
+    function setColor(color){
+      var alist;
+      alist=document.querySelectorAll('p');
+      var i=0;        
+      while(i<alist.length){
+        alist[i].style.color=color;
+        i++;          
+      }
+    }      
+
+    function bodysetColor(color){
+      document.querySelector('body').style.color=color;
+    }
+
+    function test(self){
+      var target=document.querySelector('body');
+      if(self.value==='함수:암흑속으로'){
+      target.style.background='black';
+      bodysetColor('white');
+      self.value='함수:회복으로'; 
+      setColor('red');        
+    }
+    else{
+      target.style.background='white';
+      bodysetColor('black');
+      self.value='함수:암흑속으로';
+      setColor('black');        
+    }      
+    }
+
+    var Body={
+      setColor:function(color){
+        document.querySelector('body').style.color=color;
+      }
+    }
+
+    function test2(self){
+      var target=document.querySelector('body');
+      if(self.value==='객체:암흑속으로'){
+      target.style.background='black';
+      Body.setColor('white');
+      self.value='객체:회복으로'; 
+      setColor('red');        
+    }
+    else{
+      target.style.background='white';
+      Body.setColor('black');
+      self.value='객체:암흑속으로';
+      setColor('black');        
+    }      
+    }
+
+  </script>
   </head>
   <body>
     <input
@@ -19,7 +74,8 @@
       onclick="
         document.querySelector('body').style.background='black';
         document.querySelector('body').style.color='white';
-    "
+        setColor('red');  
+      "      
     />
     <input
       type="button"
@@ -27,45 +83,34 @@
       onclick="
         document.querySelector('body').style.background='white';
         document.querySelector('body').style.color='black';
-
-
+        setColor('black');        
     "
     />
 
-    <script>
-      function test(self){
-        var target=document.querySelector('body');
-        if(self.value==='함수:암흑속으로'){
-        target.style.background='black';
-        target.style.color='white';
-        self.value='함수:회복으로';          
-
-      }
-      else{
-        target.style.background='white';
-        target.style.color='black';
-        self.value='함수:암흑속으로';
-      }      
-      }
-    </script>
     <input type="button" value="함수:암흑속으로" onclick="
       test(this);
+    ">
+
+    <input type="button" value="객체:암흑속으로" onclick="
+      test2(this);
     ">
 
     <input type="button" value="싱글:암흑속으로" onclick="
     if(this.value==='싱글:암흑속으로'){
       document.querySelector('body').style.background='black';
       document.querySelector('body').style.color='white';
-      this.value='싱글:회복으로';        
+      this.value='싱글:회복으로';    
+      setColor('red');
     }
     else{
       document.querySelector('body').style.background='white';
       document.querySelector('body').style.color='black';
       this.value='싱글:암흑속으로';
+      setColor('black');
     }      
     ">
+    <input type="button" value="home" onClick="location.href='..//'">    
 
-    
     <h1>상어가족</h1>
 
     <h2>어린이 동요</h2>
@@ -95,7 +140,34 @@
         return a+b;
       }
       document.write(add(1,2)+'<br>')      
+
     </script>
+
+    <br>
+
+    <script>
+      document.write('Object Test'+'<br>');
+      var ob={
+        "fafa":"fa",
+        "mama":"ma"        
+      }
+      ob.grandfa="gfa";
+      ob["grand mo"]="gma";
+
+      for(var key in ob){
+        document.write(key + ':' + ob[key] + '<br>');
+      }
+
+      ob.allshow=function(){
+        for(var key in this){
+        document.write(key + ':' + this[key] + '<br>');
+      } 
+      }
+
+      document.write('<br>'+'all show()'+'<br>');
+      ob.allshow();
+    </script>
+    
     </p>
   </body>
 </html>

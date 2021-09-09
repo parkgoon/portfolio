@@ -5,8 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>썸파 포트폴리오</title>
+    <script>
+      function setColor(color){
+        var alist;
+        alist=document.querySelectorAll('p');
+        var i=0;        
+        while(i<alist.length){
+          alist[i].style.color=color;
+          i++;          
+        }
+      }      
+  
+      function bodysetColor(color){
+        document.querySelector('body').style.color=color;
+      }
+  
+      function test(self){
+        var target=document.querySelector('body');
+        if(self.value==='함수:암흑속으로'){
+        target.style.background='black';
+        bodysetColor('white');
+        self.value='함수:회복으로'; 
+        setColor('red');        
+      }
+      else{
+        target.style.background='white';
+        bodysetColor('black');
+        self.value='함수:암흑속으로';
+        setColor('black');        
+      }      
+      }
+  
+      var Body={
+        setColor:function(color){
+          document.querySelector('body').style.color=color;
+        }
+      }
+  
+      function test2(self){
+        var target=document.querySelector('body');
+        if(self.value==='객체:암흑속으로'){
+        target.style.background='black';
+        Body.setColor('white');
+        self.value='객체:회복으로'; 
+        setColor('red');        
+      }
+      else{
+        target.style.background='white';
+        Body.setColor('black');
+        self.value='객체:암흑속으로';
+        setColor('black');        
+      }      
+      }
+  
+    </script>
   </head>
   <body>
+    <input
+      type="button"
+      value="암흑속으로"
+      onclick="
+        document.querySelector('body').style.background='black';
+        document.querySelector('body').style.color='white';
+        setColor('red');  
+      "      
+    />
+    <input
+      type="button"
+      value="회복으로"
+      onclick="
+        document.querySelector('body').style.background='white';
+        document.querySelector('body').style.color='black';
+        setColor('black');        
+    "
+    />
+
+    <input type="button" value="함수:암흑속으로" onclick="
+      test(this);
+    ">
+
+    <input type="button" value="객체:암흑속으로" onclick="
+      test2(this);
+    ">
+
+    <input type="button" value="싱글:암흑속으로" onclick="
+    if(this.value==='싱글:암흑속으로'){
+      document.querySelector('body').style.background='black';
+      document.querySelector('body').style.color='white';
+      this.value='싱글:회복으로';    
+      setColor('red');
+    }
+    else{
+      document.querySelector('body').style.background='white';
+      document.querySelector('body').style.color='black';
+      this.value='싱글:암흑속으로';
+      setColor('black');
+    }      
+    ">
+    <input type="button" value="home" onClick="location.href='..//'">  
+    <h1>image tag practice</h1>
     <img src="./sungryemoon.jpg" alt="숭례문" /><br />
     <a
       href="https://ko.wikipedia.org/wiki/%EC%88%AD%EB%A1%80%EB%AC%B8"
